@@ -1,0 +1,195 @@
+{
+  "name": "Flap-Flap",
+  "description": "Something something Flap-Flap",
+  "sire": "unknown",
+  "clan": "Malkavian",
+  "predatorType": {
+    "name": "Trapdoor",
+    "pickedDiscipline": "obfuscate",
+    "pickedSpecialties": [
+      {
+        "skill": "stealth",
+        "name": "Ambushes and traps"
+      }
+    ],
+    "pickedMeritsAndFlaws": [
+      {
+        "name": "Haven",
+        "level": 1,
+        "summary": "A secure aparment",
+        "type": "merit"
+      },
+      {
+        "name": "Haunted",
+        "level": 1,
+        "summary": "Ghostly presence in your haven",
+        "type": "merit"
+      }
+    ]
+  },
+  "touchstones": [
+    {
+      "name": "Gregoire",
+      "description": "",
+      "conviction": "Only attachment"
+    },
+    {
+      "name": "",
+      "description": "",
+      "conviction": ""
+    }
+  ],
+  "ambition": "Figuring out who I am",
+  "desire": "Stability",
+  "attributes": {
+    "strength": 2,
+    "charisma": 3,
+    "intelligence": 3,
+    "dexterity": 2,
+    "manipulation": 2,
+    "wits": 4,
+    "stamina": 2,
+    "composure": 3,
+    "resolve": 1
+  },
+  "skills": {
+    "athletics": 2,
+    "brawl": 0,
+    "craft": 0,
+    "drive": 0,
+    "firearms": 2,
+    "melee": 1,
+    "larceny": 1,
+    "stealth": 2,
+    "survival": 0,
+    "animal ken": 0,
+    "etiquette": 1,
+    "insight": 0,
+    "intimidation": 1,
+    "leadership": 0,
+    "performance": 0,
+    "persuasion": 3,
+    "streetwise": 0,
+    "subterfuge": 3,
+    "academics": 1,
+    "awareness": 2,
+    "finance": 0,
+    "investigation": 3,
+    "medicine": 0,
+    "occult": 2,
+    "politics": 0,
+    "science": 1,
+    "technology": 1
+  },
+  "skillSpecialties": [
+    {
+      "skill": "academics",
+      "name": "Criminal Law"
+    },
+    {
+      "skill": "craft",
+      "name": ""
+    },
+    {
+      "skill": "performance",
+      "name": ""
+    },
+    {
+      "skill": "science",
+      "name": "Forensics"
+    },
+    {
+      "skill": "investigation",
+      "name": "kindred Lore"
+    }
+  ],
+  "disciplines": [
+    {
+      "name": "Unseen Passage",
+      "description": "",
+      "rouseChecks": 1,
+      "amalgamPrerequisites": [],
+      "summary": "move while remaining hidden",
+      "dicePool": "Wits + Obfuscate / Stealth",
+      "level": 2,
+      "discipline": "obfuscate"
+    },
+    {
+      "name": "Cloud Memory",
+      "description": "",
+      "rouseChecks": 0,
+      "amalgamPrerequisites": [],
+      "summary": "make a person forget the past minute",
+      "dicePool": "Charisma + Dominate",
+      "level": 1,
+      "discipline": "dominate"
+    },
+    {
+      "name": "Ghost in the Machine",
+      "description": "",
+      "rouseChecks": 0,
+      "amalgamPrerequisites": [],
+      "summary": "Obfuscate affects technology (eg. hide yourself from recordings)",
+      "dicePool": "",
+      "level": 3,
+      "discipline": "obfuscate"
+    },
+    {
+      "name": "Cloak of Shadows",
+      "description": "",
+      "rouseChecks": 0,
+      "amalgamPrerequisites": [],
+      "summary": "blend into surroundings while motionless",
+      "dicePool": "Wits + Obfuscate / Stealth",
+      "level": 1,
+      "discipline": "obfuscate"
+    }
+  ],
+  "rituals": [],
+  "bloodPotency": 0,
+  "generation": 10,
+  "maxHealth": 0,
+  "willpower": 0,
+  "experience": 0,
+  "humanity": 0,
+  "merits": [
+    {
+      "name": "Hidden Armory",
+      "level": 1,
+      "type": "merit",
+      "summary": "weapons and armor in your haven"
+    },
+    {
+      "name": "Watchmen",
+      "level": 1,
+      "type": "merit",
+      "summary": "mortal security guards"
+    },
+    {
+      "name": "High-functioning addict",
+      "level": 1,
+      "type": "merit",
+      "summary": "add a die to one category of pool (choose once) when the last person you fed from was on your drug"
+    },
+    {
+      "name": "Eat Food",
+      "level": 2,
+      "type": "merit",
+      "summary": "can consume normal food"
+    },
+    {
+      "name": "Mask",
+      "level": 2,
+      "type": "merit",
+      "summary": "fake identity with fake documents, lv2 can pass background checks"
+    }
+  ],
+  "flaws": [
+    {
+      "name": "Hopeless Addiction",
+      "level": 2,
+      "type": "flaw",
+      "summary": "-2 dice on all pools if the last person you fed from wasn't on your drug"
+    }
+  ]
+}

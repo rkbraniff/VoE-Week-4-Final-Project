@@ -3,7 +3,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Baskervville SC", sans-serif;
+  font-family: "Baskervville SC", serif;
   box-sizing: border-box;
 }
 
@@ -15,13 +15,14 @@ body {
   min-height: 100%;
   margin: 0;
   position: relative;
+  transition: background-color 4s ease;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.486), transparent); /* start with a gradient from black to transparent */
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-family: Roboto, Noto Sans, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body,
@@ -217,7 +218,7 @@ SEARCH RESULTS
   padding: 0 20px;
 }
 
-.character-filter {
+.character__filter--container {
   width: 30%;
   min-width: 335px;
   justify-content: center;
@@ -319,10 +320,18 @@ SEARCH RESULTS CONTENT
     max-width: 1200px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .member-list {
   width: auto;
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-items: center;
+}
+
+.show-members {
   display: flex;
   flex-wrap: wrap;
 }
@@ -339,10 +348,29 @@ SEARCH RESULTS CONTENT
   cursor: pointer;
   border-radius: 10px;
   width: calc(100% / 3.2);
+  min-width: 250px;
+  opacity: 0;
+  animation: fadeIn .5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  opacity: 1;
 }
 
 .member-card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+  transform: scale(1.02);
 }
 
 .member-card__container {
@@ -357,4 +385,130 @@ SEARCH RESULTS CONTENT
 .player__avatar {
   margin: 8px;
   max-width: 125px;
+  object-fit: cover;
+}
+
+.no-results--container {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.no-results--image {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.no-results--container p {
+  font-size: 18px;
+  color: #afafaf;
+}
+
+.see-more--btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #81009b; 
+  color: rgb(226, 226, 226);
+  font-size: 20px;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.see-more--btn:hover {
+  background-color: #8f00c7; 
+  transform: scale(1.05); 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+}
+
+.see-more--btn:active {
+  background-color: #004080; 
+  transform: scale(0.95); 
+}
+
+.see-more--btn {
+  display: block;
+  text-align: center;
+  margin: 20px auto; 
+}
+
+/* Loading Overlay */
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0); /* Dark background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; /* Start at invisible */
+  visibility: hidden; /* hide it from the layout */
+  transition: opacity 4s ease, visibility 4s ease; /* Smooth fade-out transition */
+  z-index: 1000; /* Ensure it's above all other elements */
+}
+
+.gif-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.loading-overlay.show {
+  opacity: 1; /* Fully Visible */
+  visibility: visible;
+  pointer-events: none; /* Prevents it from blocking interaction */
+}
+
+.loading-overlay iframe {
+  flex: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  margin: 0;
+  border: none;
+}
+
+.loading-overlay p {
+  display: none;
+}
+
+.page-content {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 4s ease, transform 4s ease;
+}
+
+.page-content.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-content {
+  animation: fadeInUp 4s ease forwards;
 }

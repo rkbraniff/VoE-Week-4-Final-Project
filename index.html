@@ -11,88 +11,99 @@
 </head>
 
 <body>
-    <section id="Landing">
-        <div class="container flex flex-col">
-            <div class="nav__container flex flex-col">
-                <div class="nav__bar flex align-center justify-between content-wrapper">
-                    <div class="nav__bar--logo">
-                        <a class="nav__bar--logo-link" href="#"></a>
-                        <img class="logo"
-                            src="./images/VoELogoExtra/Logo Files/For Web/png/Color logo - no background.png" alt="">
+    <div class="loading-overlay" id="loading-overlay" style="display: none;">
+        <div class="gif-container">
+            <div><iframe src="https://giphy.com/embed/f4IjBQupqojhqQzKk2" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/blood-drip-f4IjBQupqojhqQzKk2">via GIPHY</a></p>
+            <div><iframe src="https://giphy.com/embed/f4IjBQupqojhqQzKk2" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/blood-drip-f4IjBQupqojhqQzKk2">via GIPHY</a></p>
+        </div>
+    </div>
+    <div class="page-content">
+        <section id="Landing">
+            <div class="container flex flex-col">
+                <div class="nav__container flex flex-col">
+                    <div class="nav__bar flex align-center justify-between content-wrapper">
+                        <div class="nav__bar--logo">
+                            <a class="nav__bar--logo-link" href="#"></a>
+                            <img class="logo"
+                                src="./images/VoELogoExtra/Logo Files/For Web/png/Color logo - no background.png" alt="">
+                        </div>
+                        <ul class="nav__link--list flex align-center justify-between">
+                            <li><a class="nav__link" href="#home">Home</a></li>
+                            <li><a class="nav__link" href="mailto:rfpaustianbusiness@gmail.com">Contact Us</a>
+                            </li>
+                            <div class="nav__link--styled flex justify-between">
+                                <li><a class="nav__link nav__link--login" href="">Login</a></li>
+                                <li><a class="nav__link nav__link--primary" href="">Sign Up</a></li>
+                        </ul>
                     </div>
-                    <ul class="nav__link--list flex align-center justify-between">
-                        <li><a class="nav__link" href="#home">Home</a></li>
-                        <li><a class="nav__link" href="mailto:rfpaustianbusiness@gmail.com">Contact Us</a>
-                        </li>
-                        <div class="nav__link--styled flex justify-between">
-                            <li><a class="nav__link nav__link--login" href="">Login</a></li>
-                            <li><a class="nav__link nav__link--primary" href="">Sign Up</a></li>
-                    </ul>
-                </div>
-                <div class="search-bar__container content-wrapper flex-col align-center justify-center">
-                    <h1 class="page__title">
-                        Member Directory
-                    </h1>
-                    <div class="input__container">
-                        <input type="text" class="search-bar" placeholder="Search by Veil of Eternity profile name" >
-                        <div class="magnifying-glass flex justify-center align-center" type="submit" onclick="searchWithField()">
-                            <i class="fa-solid fa-magnifying-glass"></i>
+                    <div class="search-bar__container content-wrapper flex-col align-center justify-center">
+                        <h1 class="page__title">
+                            Member Directory
+                        </h1>
+                        <div class="input__container">
+                            <input type="text" class="search-bar" id="search-input" placeholder="Search by Veil of Eternity Online status">
+                            <div class="magnifying-glass flex justify-center align-center" type="button" id="search-button"
+                                onclick="searchWithField()">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
                         </div>
                     </div>
+                    <div class="overlay">
+    
+                    </div>
                 </div>
-                <div class="overlay">
-
-                </div>
-            </div>
-            <section id="search">
-                <div id="filter" class="content-wrapper justify-between">
-                    <h2 class="search-results">Search Results:</h1>
-                        <div class="character-filter flex flex-col">
+                <section id="search">
+                    <div id="filter" class="content-wrapper justify-between">
+                        <h2 class="search-results">Search Results:</h2>
+                        
+                        <div class="character__filter--container flex flex-col">
                             <h2>
-                                Dot Range: &nbsp;<span class="range">
+                                User Id Range: &nbsp;<span class="range">
                                     <p id="min-value">0</p>&nbsp; to &nbsp;<p id="max-value">39</p>
                                 </span>
                             </h2>
-
+    
                             <div class="range-slider">
                                 <div class="range-fill">
-
+    
                                 </div>
                                 <input type="range" class="min-price slider" value="0" min="0" max="39" step="1">
-
+    
                                 <input type="range" class="max-price slider" value="39" min="0" max="39" step="1">
                                 <div class="content">
                                     <div>
-                                        <p id="min-value">0</p>
+                                        <p id="min-value-display">0</p>
                                     </div>
                                     <div>
-                                        <p id="max-value">39</p>
+                                        <p id="max-value-display">39</p>
                                     </div>
                                 </div>
                             </div>
-
+    
                         </div>
-                </div>
-                <div id="Stats">
-                    <div class="content-wrapper">
-                        <div class="member-list">
-                            <div class="member">
-                                <div class="member-card">
-                                    <div class="member-card__container">
-                                        <h3>${members.username}</h4>
-                                        <p><b>Status:</b> ${members.status}</p>
-                                        <p><b>ID: </b> ${members.id}</p>
-                                        <p><a href="https://${member.avatar_url}"><img class="player__avatar" src="${members.avatar_url}"></a></p>
+                    </div>
+                    <div id="Stats">
+                        <div class="content-wrapper">
+                            <div class="member-list">
+                                <div class="member">
+                                    <div class="member-card">
+                                        <div class="member-card__container">
+                                            <h3>member name</h4>
+                                                <p><b>Status:</b> member status}</p>
+                                                <p><b>ID: </b> member id</p>
+                                                <p><a href="member avatar"><img class="player__avatar"
+                                                            src="https://cdn.discordapp.com/widget-avatars/8DY30xfNv-7IcKKycM0L2D2Zzz80heBXr8nh0sQWWSM/qVIkX9PYkhGvLnupZ8FLlzaH1EM1Bj1NhZqphzNTXFAMc80P0r9j9nzz0C1jePwV0SHiMgK3bfUpksYvxvCdL3SV6S15OPedi57nJwnVQg6m_Aer8saurtYKKFGJQ6PhNd6W_bqvF-bkwA"></a></p>
+                                        </div>
                                     </div>
-                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </div>
-    </section>
+                </section>
+            </div>
+        </section>
+    </div>
+    <script src="index.js"></script>
 </body>
-<script src="index.js"></script>
 
 </html>

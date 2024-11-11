@@ -141,10 +141,18 @@ function filterAndRenderMembers(members, minPrice, maxPrice, fromSeeMore = false
                 // Reset the sliders to their default values
                 const inputElements = document.querySelectorAll(".slider");
                 inputElements[0].value = 0;
-                inputElements[1].value = members.length;
+                inputElements[1].value = allMembers.length;
 
-                validateRange(inputElements, members.length); // Update slider display
-                filterAndRenderMembers(members, 0, members.length, false); // Re-render all members
+                validateRange(inputElements, allMembers.length); // Update slider display
+
+                // Clear the Search input field
+                const searchInput = document.getElementById('search-input');
+                if (searchInput) {
+                    searchInput.value = ''; // Clear the search input
+                }
+                
+
+                filterAndRenderMembers(allMembers, 0, allMembers.length, false); // Re-render all members
             });
         } else {
             console.error("Reset Filter button was not found in the DOM.");

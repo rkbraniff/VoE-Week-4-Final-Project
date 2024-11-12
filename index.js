@@ -5,6 +5,7 @@ let loadedMembers = 0; //Track the Number of Loaded members
 let totalLoadedMembers = 0; // Track total loaded members from "See More"
 const membersPerPage = 6; // Number of Members to load each time
 let allMembers = []; // Store all members for searching
+let hungerLevels = {}; // Track hunger levels for each member
 
 
 async function result() {
@@ -50,6 +51,11 @@ async function result() {
         let minPrice = parseInt(inputElements[0].value); // Slider Minimum Value
         let maxPrice = parseInt(inputElements[1].value); // Slider Maximum Value
         allMembers = membersData.members
+
+        // Initialize hunger levels
+        initializeHunger(allMembers);
+
+        // Filter and Render members
         filterAndRenderMembers(allMembers, minPrice, maxPrice, false); // Explicitly pass `false` in order to not accidentally reference an undefined fromSeeMore
 
         // === ADD SEARCH LOGIC HERE ===
@@ -150,7 +156,7 @@ function filterAndRenderMembers(members, minPrice, maxPrice, fromSeeMore = false
                 if (searchInput) {
                     searchInput.value = ''; // Clear the search input
                 }
-                
+
 
                 filterAndRenderMembers(allMembers, 0, allMembers.length, false); // Re-render all members
             });
@@ -205,21 +211,95 @@ function renderSeeMoreButton(members, minPrice, maxPrice) {
     }
 }
 
+function initializeHunger(members) {
+    members.forEach(members => {
+        if (!hungerLevels[members.id]) {
+            hungerLevels[members.id] = 0; // Initialize hunger to 0
+        }
+    });
+}
+
 function memberHTML(members) {
     const avatarURL = members.avatar_url ? members.avatar_url.replace('http:', 'https:') : 'default-avatar-url'; //Fallback if avatar is missing
     console.log('avatar URL', avatarURL);
+    const hungerLevel = hungerLevels[members.id] || 0;
 
 
     return `
-    <div class="member-card" onclick="showUserPosts(${members.id})">
+    <div class="member-card">
         <div class="member-card__container">
             <h3>${members.username}</h3>
             <p><b>Status:</b> ${members.status}</p>
             <p><b>ID: </b> ${members.id}</p>
             <p><a href="${avatarURL}" target="_blank">
                 <img class="player__avatar" src="${avatarURL}" alt="${members.username}'s Avatar"></a></p>
+
+            <!-- Hunger overlay -->
+            <div class="hunger-overlay">
+                <p>Hunger Level: <span id="hunger-level-${members.id}">${hungerLevel}</span></p>
+                <div class="hunger-buttons">
+                    <button onclick="increaseHunger(${members.id})">+</button>
+                    <button onclick="decreaseHunger(${members.id})">-</button>
+                </div>
+                <button class="show-posts-btn" onclick="showUserPosts(${members.id})">Show User's Posts</button>
+            </div>
         </div>
     </div>`;
+}
+
+function increaseHunger(membersId) {
+    if (hungerLevels[membersId] < 5) { // Assuming max hunger is 5
+        hungerLevels[membersId]++;
+        updateHungerDisplay(membersId);
+    }
+}
+
+function decreaseHunger(membersId) {
+    if (hungerLevels[membersId] > 0) { // Assuming minimum hunger is 0
+        hungerLevels[membersId]--;
+        updateHungerDisplay(membersId);
+    }
+}
+
+function updateHungerDisplay(membersId) {
+    document.getElementById(`hunger-level-${membersId}`).textContent = hungerLevels[membersId];
+}
+
+function showUserPosts(membersId) {
+    // open in a new tab
+    const newTab = window.open("", `_blank`);
+
+    // Add some HTML to the new tab
+    newTab.document.write(`
+        <html>
+            <head>
+                <title>Posts of User ID: ${membersId}</title>
+                <style>
+                    body {
+                        font-family: "Baskervville SC", serif;
+                        margin: 20px;
+                        padding: 0;
+                        background-color: #f3f3f3;
+                        color: #333;
+                    }
+                    h2 {
+                        color: #81009b;
+                    }
+                    p {
+                        font-size: 16px;
+                    }
+                </style>
+            </head>
+            <body>
+                <h2>Posts of User ID: ${membersId}</h2>
+                <p>This is where the posts of user ID ${membersId} will appear.</p>
+                <p>Replace this content with the fetched posts information when available.</p>
+            </body>
+        </html>
+    `);
+
+    // Focus the new tab to make it the active window
+    newTab.focus();
 }
 
 function sliderHTML(memberLength) {

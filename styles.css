@@ -351,6 +351,8 @@ SEARCH RESULTS CONTENT
   min-width: 250px;
   opacity: 0;
   animation: fadeIn .5s ease-in-out forwards;
+  position: relative;
+  overflow: hidden; /* Keep overlay within the card */
 }
 
 @keyframes fadeIn {
@@ -511,4 +513,81 @@ SEARCH RESULTS CONTENT
 
 .page-content {
   animation: fadeInUp 4s ease forwards;
+}
+
+.hunger-overlay {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -100%; /*start completely outside the card from the bottom*/
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.member-card:hover .hunger-overlay {
+  transform: translateY(0);
+  bottom: 0;
+  opacity: 1;
+}
+
+.hunger-buttons {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.hunger-overlay .hunger-buttons button {
+  background-color: #640000; 
+  color: #ffffff; 
+  font-size: 24px; 
+  border: none; 
+  border-radius: 50%; 
+  width: 50px; 
+  height: 50px; 
+  margin: 10px; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease, transform 0.2s ease; 
+}
+
+.hunger-overlay .hunger-buttons button:hover {
+  background-color: #8f0000; 
+  transform: scale(1.1); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+.hunger-overlay .hunger-buttons button:active {
+  transform: scale(0.95); 
+  background-color: #4b0000; 
+}
+
+.show-posts-btn {
+  background-color: #640000; 
+  color: #ffffff; 
+  font-size: 18px; 
+  border: none; 
+  border-radius: 8px; 
+  padding: 10px 20px;
+  margin-top: 15px;
+  cursor: pointer; 
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.show-posts-btn:hover {
+  background-color: #8f0000; 
+  transform: scale(1.05); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+.show-posts-btn:active {
+  transform: scale(0.95); 
+  background-color: #4b0000; 
 }
